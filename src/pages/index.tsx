@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link } from 'gatsby'
+import Crane from '../assets/Crane.svg'
 
 import Page from '../components/Page'
 import Container from '../components/Container'
@@ -9,10 +9,10 @@ const IndexPage = () => (
   <IndexLayout>
     <Page>
       <Container>
-        <h1>Hi people</h1>
-        <p>Welcome to your new Gatsby site.</p>
-        <p>Now go build something great.</p>
-        <Link to="/page-2/">Go to page 2</Link>
+        <h1>Greetings programs</h1>
+        <p>Welcome to our new site.</p>
+        <p>We are still in development.</p>
+        <img src={Crane} alt="Crane" />
       </Container>
     </Page>
   </IndexLayout>
