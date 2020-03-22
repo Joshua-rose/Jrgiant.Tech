@@ -21,14 +21,21 @@ import verdaccio from './Verdaccio'
 export { Bash, Bootstrap, CSS3, Git, Github, HTML5, JoshuaAtDesk, JrGiantLogo, LESS, Node, Npm, ReactSVG, Sass, verdaccio }
 const StyledSVG = styled.div`
   max-width: ${getEmSize(200)}em;
+  position: absolute;
   svg {
     width: 100%;
   }
 `
 interface SVGProps {
+  x: string
+  y: string
   className?: string
 }
 
-const SVG: React.FC<SVGProps> = ({ children, className }) => <StyledSVG className={className}>{children}</StyledSVG>
+const SVG: React.FC<SVGProps> = ({ children, className, x, y }) => (
+  <StyledSVG className={className} style={{ top: `${x}%`, left: `${y}%` }}>
+    {children}
+  </StyledSVG>
+)
 
 export default SVG
