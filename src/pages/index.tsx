@@ -126,7 +126,7 @@ const IndexPage = () => {
           <h1>Greetings programs</h1>
           <p>Welcome to our new site.</p>
           <p>We are still in development.</p>
-          <div style={{ position: 'relative' }}>
+          <div style={{ position: 'relative', width: '100vh', height: '40vh' }}>
             {mobileSVG.map(S => {
               const { name, component: Component, x, y } = S
 
