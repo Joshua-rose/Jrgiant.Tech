@@ -21,6 +21,7 @@ import verdaccio from './Verdaccio'
 export { Bash, Bootstrap, CSS3, Git, Github, HTML5, JoshuaAtDesk, JrGiantLogo, LESS, Node, Npm, ReactSVG, Sass, verdaccio }
 const StyledSVG = styled.div`
   max-width: ${getEmSize(200)}em;
+  min-width: ${getEmSize(150)}em;
   position: absolute;
   svg {
     width: 100%;
