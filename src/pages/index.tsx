@@ -136,7 +136,9 @@ const IndexPage = () => {
                 </StyledSVG>
               )
             })}
-            <JoshuaAtDesk />
+            <div style={{ margin: '0 auto', width: '100%', display: 'flex', justifyContent: 'center', position: 'relative', zIndex: '99' }}>
+              <JoshuaAtDesk />
+            </div>
           </div>
         </Container>
       </Page>
