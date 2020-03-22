@@ -1,0 +1,16 @@
+/* eslint-disable max-len */
+import React, { ReactElement } from 'react'
+
+export default function NPM(): ReactElement {
+  return (
+    <svg width="161" height="63" viewBox="0 0 161 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M0 0H161V54H80.5V63H44.7222V54H0V0ZM8.94444 45H26.8333V18H35.7778V45H44.7222V9H8.94444V45ZM53.6667 9V54H71.5556V45H89.4444V9H53.6667ZM71.5556 18H80.5V36H71.5556V18ZM98.3889 9V45H116.278V18H125.222V45H134.167V18H143.111V45H152.056V9H98.3889Z"
+        fill="#CB3837"
+      />
+      <path d="M8.94458 45H26.8335V18H35.7779V45H44.7224V9H8.94458V45Z" fill="white" />
+      <path d="M53.6667 9V54H71.5556V45H89.4445V9H53.6667ZM80.5001 36H71.5556V18H80.5001V36Z" fill="white" />
+      <path d="M98.3889 9V45H116.278V18H125.222V45H134.167V18H143.111V45H152.056V9H98.3889Z" fill="white" />
+    </svg>
+  )
+}
