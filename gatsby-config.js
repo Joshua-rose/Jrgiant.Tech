@@ -1,15 +1,13 @@
-'use strict'
-
 module.exports = {
   siteMetadata: {
-    title: 'gatsby-starter-typescript-plus',
-    description: 'A starter kit for TypeScript-based Gatsby projects with sensible defaults.',
-    keywords: 'gatsbyjs, gatsby, javascript, sample, something',
-    siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com',
+    title: 'JrGiant Development',
+    description: 'Specializing in React Apps, SharePoint management/development, Web and Application development.',
+    keywords: 'sharepoint, react, javascript, add-ins, wordpress',
+    siteUrl: 'https://jrgiant.tech',
     author: {
-      name: 'Resi Respati',
-      url: 'https://twitter.com/resir014',
-      email: 'resir014@gmail.com'
+      name: 'Joshua Rose',
+      url: 'https://joshua-rose.github.io',
+      email: 'jrgiant@outlook.com'
     }
   },
   plugins: [
