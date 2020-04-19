@@ -8,7 +8,7 @@ import CSS3 from './CSS3'
 import Git from './Git'
 import Github from './Github'
 import HTML5 from './HTML5'
-// import JavaScript from './JavaScript'
+import SharePoint from './SharePoint.png'
 import JoshuaAtDesk from './JoshuaAtDesk'
 import JrGiantLogo from './JrGiantLogo'
 import LESS from './LESS'
@@ -18,7 +18,7 @@ import ReactSVG from './React'
 import Sass from './Sass'
 import verdaccio from './Verdaccio'
 
-export { Bash, Bootstrap, CSS3, Git, Github, HTML5, JoshuaAtDesk, JrGiantLogo, LESS, Node, Npm, ReactSVG, Sass, verdaccio }
+export { Bash, Bootstrap, CSS3, Git, Github, HTML5, JoshuaAtDesk, JrGiantLogo, LESS, Node, Npm, ReactSVG, Sass, SharePoint, verdaccio }
 const StyledSVG = styled.div`
   max-width: ${getEmSize(200)}em;
   min-width: ${getEmSize(150)}em;
