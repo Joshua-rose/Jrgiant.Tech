@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import styled from '@emotion/styled'
+import CardContainer from '../components/Cards'
+
 import StyledSVG, {
   Bash,
   Bootstrap,
@@ -13,6 +16,7 @@ import StyledSVG, {
   Npm,
   ReactSVG,
   Sass,
+  SharePoint,
   verdaccio as Verdaccio
 } from '../components/svgs'
 
@@ -20,130 +24,85 @@ import Page from '../components/Page'
 import Container from '../components/Container'
 import IndexLayout from '../layouts'
 
-class SvgObj {
-  constructor(component: React.FC, name: string) {
-    this.directionAngle = Math.floor(Math.random() * 360)
-    this.x = Math.floor(Math.random() * 100)
-    this.y = Math.floor(Math.random() * 100)
-    this.name = name
-    this.component = component
-    this.vector = {
-      x: Math.cos(this.directionAngle),
-      y: Math.sin(this.directionAngle)
-    }
+const StyledDiv = styled.div`
+  position: absolute;
+  svg {
+    width: 100%;
+    height: 100%;
   }
+`
+const StyledImg = styled.img`
+  position: absolute;
+`
+const DeskDiv = styled.div`
+  position: relative;
+  width: 80vw;
+  height: calc(80vw * (19 / 38));
+  margin: 0 auto;
+`
 
-  directionAngle: number
+const LandingPage = styled(Page)`
+  padding: 0;
+`
 
-  vector: { x: number; y: number }
+const TriangleSection = styled.div`
+position: absolute;
 
-  x: number
-
-  y: number
-
-  name: string
-
-  component: React.FC
-
-  checkBoundaries() {
-    if (this.x > 100 || this.x < 0) {
-      this.vector.x *= -1
-      /* Ensure the dots are pushed inside */
-      this.x = Math.max(0, this.x)
-    }
-    if (this.y > 100 || this.y < 0) {
-      this.vector.y *= -1
-      /* Ensure the dots are pushed inside */
-      this.y = Math.max(0, this.y)
-    }
-  }
-
-  update() {
-    this.checkBoundaries()
-    this.x += this.vector.x
-    this.y += this.vector.y
-    return this
-  }
+    clip-path: polygon(0 0,0 50%,100% 0);
+    background-color: #4961dc;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
 }
+`
 
-export interface RequestRef {
-  directionAngle: number
+const DeskContainer = styled.div`
+  position: relative;
+  justify-content: center;
+  align-content: center;
+`
 
-  vector: { x: number; y: number }
-
-  x: number
-
-  y: number
-
-  name: string
-
-  component: JSX.Element
-
-  checkBoundaries: () => void
-
-  update: () => void
-}
-const IndexPage = () => {
-  const requestRef = React.useRef(0)
-  const components: { [key: string]: React.FC } = {
-    Bash,
-    Bootstrap,
-    CSS3,
-    Git,
-    Github,
-    HTML5,
-    JrGiantLogo,
-    LESS,
-    Node,
-    Npm,
-    ReactSVG,
-    Sass,
-    Verdaccio
-  }
-  const svgObjs = Object.keys(components).map((S: string) => new SvgObj(components[S], S))
-  const [mobileSVG, setMobileSVG] = useState(svgObjs)
-
-  useEffect(() => {
-    const animate = () => {
-      setMobileSVG(prevMobileSVG => {
-        const ms = [...prevMobileSVG]
-        ms.map(s => s.update())
-        // Object.keys(ms).forEach((key: string) => {
-        //   ms[key].update()
-        // })
-        requestRef.current = requestAnimationFrame(animate)
-        return ms
-      })
-    }
-    requestRef.current = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(requestRef.current)
-  }, [])
-
-  return (
-    <IndexLayout>
-      <Page>
-        <Container>
-          <h1>Greetings programs</h1>
-          <p>Welcome to our new site.</p>
-          <p>We are still in development.</p>
-          <div style={{ position: 'relative', width: '100vh', height: '40vh' }}>
-            {mobileSVG.map(S => {
-              const { name, component: Component, x, y } = S
-
-              return (
-                <StyledSVG className={`${name} moving-svg`} x={`${x}`} y={`${y}`} key={name}>
-                  <Component />
-                </StyledSVG>
-              )
-            })}
-            <div style={{ margin: '0 auto', width: '100%', display: 'flex', justifyContent: 'center', position: 'relative', zIndex: '99' }}>
-              <JoshuaAtDesk />
-            </div>
-          </div>
-        </Container>
-      </Page>
-    </IndexLayout>
-  )
-}
+const IndexPage = () => (
+  <IndexLayout>
+    <LandingPage>
+      <TriangleSection />
+      <Container>
+        <DeskContainer>
+          <DeskDiv>
+            {[
+              { alt: 'Man at desk', src: JoshuaAtDesk, style: { width: '35%', bottom: '4%', left: '30%' } },
+              { alt: 'Bash Logo', src: Bash, style: { top: '84%', left: '6%', width: '15.7%' } },
+              { alt: 'Verdaccio Logo', src: Verdaccio, style: { left: '3.8%', top: '12.2%', width: '12%' } },
+              { alt: 'NPM Logo', src: Npm, style: { left: '3%', top: '36%', width: '11.5%' } },
+              { alt: 'Bootstrap Logo', src: Bootstrap, style: { top: '13%%', right: '10%', width: '7.3%' } },
+              { alt: 'CSS3 Logo', src: CSS3, style: { top: '72%', right: '26.5%', width: '7%' } },
+              { alt: 'Git Logo', src: Git, style: { top: '67%', left: '0%', width: '12%' } },
+              { alt: 'Github Logo', src: Github, style: { top: '81%', right: '3%', width: '8%' } },
+              { alt: 'HTML5 Logo', src: HTML5, style: { top: '1%', right: '38%', width: '7%' } },
+              { alt: 'SharePoint Logo', src: SharePoint, style: { top: '25%', right: '17.5%', width: '17%' } },
+              { alt: 'LESS Logo', src: LESS, style: { top: '68.6%', right: '15.2%', width: '8.0%' } },
+              { alt: 'Node Logo', src: Node, style: { top: '60%', left: '18%', width: '12%' } },
+              { alt: 'React Logo', src: ReactSVG, style: { top: '1%', left: '20%', width: '19%' } },
+              { alt: 'Sass Logo', src: Sass, style: { top: '43%', right: '0%', width: '12%' } }
+            ].map((pic: { src: any; alt: string; style: React.CSSProperties }) =>
+              typeof pic.src === 'string' ? (
+                <StyledImg src={pic.src} alt={pic.alt} style={pic.style} />
+              ) : (
+                  <StyledDiv id={pic.alt.replace(/\s/g, '_')} style={pic.style}>
+                    {pic.src()}
+                  </StyledDiv>
+                )
+            )}
+          </DeskDiv>
+        </DeskContainer>
+      </Container>
+    </LandingPage>
+    <Page>
+      <CardContainer />
+    </Page>
+  </IndexLayout>
+)
 
 export default IndexPage
