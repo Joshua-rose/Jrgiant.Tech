@@ -14,10 +14,10 @@ const StyledHeader = styled.header`
 `
 
 const HeaderInner = styled(Container)`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 250px 1fr;
   align-items: center;
-  height: 100%;
+  height: ${heights.header}px;
 `
 
 const HomepageLink = styled(Link)`
@@ -31,6 +31,15 @@ const HomepageLink = styled(Link)`
   }
 `
 
+const Menu = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  a {
+    color: #fff;
+  }
+`
+
 interface HeaderProps {
   title: string
 }
@@ -38,7 +47,9 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ title }) => (
   <StyledHeader>
     <HeaderInner>
-      <HomepageLink to="/">{title}</HomepageLink>
+      <Menu>
+        <Link to="/Blog">Blog</Link>
+      </Menu>
     </HeaderInner>
   </StyledHeader>
 )
