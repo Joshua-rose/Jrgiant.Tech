@@ -13,10 +13,13 @@ const StyledImage = styled.img`
 `
 const CardContainer = styled.div`
   background-image: url(${circuit});
+  background-color: #33333333;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 10vw;
+  margin: 0 auto;
 `
 
 const StyledUl = styled.ul`

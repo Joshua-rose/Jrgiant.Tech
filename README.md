@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/04899f90-91fe-4a95-a6aa-a09630aa0ec8/deploy-status)](https://app.netlify.com/sites/gifted-bohr-7fe8a3/deploys)
+
 <p align="center">
   <a href="https://www.gatsbyjs.org">
     <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />

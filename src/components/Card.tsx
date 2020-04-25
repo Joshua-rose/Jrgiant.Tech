@@ -10,7 +10,7 @@ interface Props {
 const Card = styled.div`
   background-color: #fff;
   border-radius: 30px;
-  margin: 3vw;
+  margin: 3vw 3vw 3vw 0;
   padding: 1vw;
   min-width: 338px;
   max-width: 485px;
@@ -18,6 +18,9 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  &:first-child {
+    margin-left: 3vw;
+  }
 `
 
 const CardLogo = styled.img`
