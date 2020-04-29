@@ -19,6 +19,9 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-plugin-recaptcha`
+    },
+    {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
