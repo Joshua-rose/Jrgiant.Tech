@@ -55,6 +55,7 @@ const SvgSection = styled.div`
   min-width: 200px;
 `
 
+const ThankYou = styled.h2``
 export default function Contact() {
   const [form, setForm] = useState({
     name: '',
@@ -64,6 +65,7 @@ export default function Contact() {
 
   const [showReCaptcha, setShowReCaptcha] = useState(false)
   const [isRecaptchaLoaded, setIsRecaptchaLoaded] = useState(false)
+  const [showThankYou, setShowThankYou] = useState(false)
   const recaptchaLoaded = () => {
     setIsRecaptchaLoaded(true)
   }
@@ -84,7 +86,9 @@ export default function Contact() {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', ...form, 'g-recaptcha-response': data })
     })
-      .then(() => alert('Success!'))
+      .then(() => {
+        setShowThankYou(true)
+      })
       .catch(error => alert(error))
     // console.log('verify Callback', data)
   }
@@ -103,7 +107,6 @@ export default function Contact() {
         <Container>
           <FormContainer>
             <FormSection>
-              <h1>Contact Us</h1>
               {!isRecaptchaLoaded && (
                 <form
                   onSubmit={handleSubmit}
@@ -113,6 +116,7 @@ export default function Contact() {
                   netlify-honeypot="bot-field"
                   data-netlify="true"
                 >
+                  <h1>Contact Us</h1>
                   <p className="hidden">
                     <label htmlFor="bot-field">
                       Don’t fill this out if you're human: <input name="bot-field" id="bot-field" />
@@ -143,14 +147,18 @@ export default function Contact() {
                   </p>
                 </form>
               )}
-              {showReCaptcha && (
-                <Recaptcha
-                  sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY}
-                  render="explicit"
-                  verifyCallback={verifyCallback}
-                  onloadCallback={recaptchaLoaded}
-                />
+              {showReCaptcha && !showThankYou && (
+                <>
+                  <h2>Make sure you are not a bot</h2>
+                  <Recaptcha
+                    sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY}
+                    render="explicit"
+                    verifyCallback={verifyCallback}
+                    onloadCallback={recaptchaLoaded}
+                  />
+                </>
               )}
+              {showThankYou && <ThankYou>Message away!!</ThankYou>}
             </FormSection>
             <SvgSection>
               <img src={AnimatedEnvelop} alt="Envelope" />
