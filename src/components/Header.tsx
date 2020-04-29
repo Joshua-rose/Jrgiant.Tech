@@ -15,7 +15,7 @@ const StyledHeader = styled.header`
 
 const HeaderInner = styled(Container)`
   display: grid;
-  grid-template-columns: 250px 1fr;
+  grid-template-columns: 150px 1fr;
   align-items: center;
   height: ${heights.header}px;
 `
@@ -40,6 +40,16 @@ const Menu = styled.div`
   justify-content: flex-end;
   a {
     color: #fff;
+    padding: 0.5rem 2rem;
+    transition: all 0.3s linear;
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.1rem;
+    &:hover {
+      color: ${colors.brand};
+      background-color: ${colors.white};
+      text-decoration: none;
+    }
   }
 `
 
