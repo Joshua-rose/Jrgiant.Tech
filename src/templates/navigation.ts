@@ -1,5 +1,5 @@
 const Links = {
-  Blog: '/blog',
+  Blog: '/Blog',
   'Contact Us': '/Contact'
 }
 export default Links
