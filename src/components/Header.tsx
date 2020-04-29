@@ -5,6 +5,7 @@ import { Link } from 'gatsby'
 import Logo from '../assets/JrGiantLogo.svg'
 import { heights, dimensions, colors } from '../styles/variables'
 import Container from './Container'
+import Links from '../templates/navigation'
 
 const StyledHeader = styled.header`
   padding: 0 ${dimensions.containerPadding}rem;
@@ -52,9 +53,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => (
       <HomepageLink to="/" title={title}>
         <img src={Logo} alt={title} />
       </HomepageLink>
-      <Menu>
-        <Link to="/Blog">Blog</Link>
-      </Menu>
+      <Menu>{Links && Object.keys(Links).map(l => <Link to={Links[l]}>{l}</Link>)}</Menu>
     </HeaderInner>
   </StyledHeader>
 )
