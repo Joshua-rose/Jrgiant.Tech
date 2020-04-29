@@ -45,19 +45,6 @@ const LandingPage = styled(Page)`
   padding: 0;
 `
 
-const TriangleSection = styled.div`
-position: absolute;
-
-    clip-path: polygon(0 0,0 50%,100% 0);
-    background-color: #4961dc;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-}
-`
-
 const DeskContainer = styled(Container)`
   position: relative;
   justify-content: center;
@@ -68,7 +55,6 @@ const DeskContainer = styled(Container)`
 const IndexPage = () => (
   <IndexLayout>
     <LandingPage>
-      <TriangleSection />
       <DeskContainer>
         <DeskDiv>
           {[
