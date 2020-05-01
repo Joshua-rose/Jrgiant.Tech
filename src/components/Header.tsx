@@ -5,6 +5,7 @@ import { Link } from 'gatsby'
 import Logo from '../assets/JrGiantLogo.svg'
 import { heights, dimensions, colors } from '../styles/variables'
 import Container from './Container'
+import Links from '../templates/navigation'
 
 const StyledHeader = styled.header`
   padding: 0 ${dimensions.containerPadding}rem;
@@ -14,7 +15,7 @@ const StyledHeader = styled.header`
 
 const HeaderInner = styled(Container)`
   display: grid;
-  grid-template-columns: 250px 1fr;
+  grid-template-columns: 150px 1fr;
   align-items: center;
   height: ${heights.header}px;
 `
@@ -39,6 +40,16 @@ const Menu = styled.div`
   justify-content: flex-end;
   a {
     color: #fff;
+    padding: 0.5rem 2rem;
+    transition: all 0.3s linear;
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.1rem;
+    &:hover {
+      color: ${colors.brand};
+      background-color: ${colors.white};
+      text-decoration: none;
+    }
   }
 `
 
@@ -52,9 +63,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => (
       <HomepageLink to="/" title={title}>
         <img src={Logo} alt={title} />
       </HomepageLink>
-      <Menu>
-        <Link to="/Blog">Blog</Link>
-      </Menu>
+      <Menu>{Links && Object.keys(Links).map(l => <Link to={Links[l]}>{l}</Link>)}</Menu>
     </HeaderInner>
   </StyledHeader>
 )
