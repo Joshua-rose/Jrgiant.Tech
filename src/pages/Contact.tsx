@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import Recaptcha from 'react-recaptcha'
 import styled from '@emotion/styled'
 import AnimatedEnvelop from '../assets/Animated Envelop With Text.svg'
+import RollyBot from '../components/svgs/Rolly-Bot'
+import ThankYouStar from '../components/svgs/ThankYouStar'
 
 import Page from '../components/Page'
 import Container from '../components/Container'
@@ -158,10 +160,12 @@ export default function Contact() {
                   />
                 </>
               )}
-              {showThankYou && <ThankYou>Message away!!</ThankYou>}
+              {showThankYou && <ThankYou>Message Sent</ThankYou>}
             </FormSection>
             <SvgSection>
-              <img src={AnimatedEnvelop} alt="Envelope" />
+              {!showReCaptcha && !showThankYou && <img src={AnimatedEnvelop} alt="Envelope" />}
+              {showReCaptcha && !showThankYou && <RollyBot />}
+              {showThankYou && <ThankYouStar />}
             </SvgSection>
           </FormContainer>
         </Container>
