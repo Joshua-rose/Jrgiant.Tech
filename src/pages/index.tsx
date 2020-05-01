@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import CardContainer from '../components/Cards'
+import { breakpoints } from '../styles/variables'
 
 import StyledSVG, {
   Bash,
@@ -23,6 +24,8 @@ import StyledSVG, {
 import Page from '../components/Page'
 import Container from '../components/Container'
 import IndexLayout from '../layouts'
+import { ReactLogo } from '../assets'
+import SharePointLogo from '../assets/JavaScript.svg'
 
 const StyledDiv = styled.div`
   position: absolute;
@@ -45,19 +48,6 @@ const LandingPage = styled(Page)`
   padding: 0;
 `
 
-const TriangleSection = styled.div`
-position: absolute;
-
-    clip-path: polygon(0 0,0 50%,100% 0);
-    background-color: #4961dc;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-}
-`
-
 const DeskContainer = styled(Container)`
   position: relative;
   justify-content: center;
@@ -65,10 +55,35 @@ const DeskContainer = styled(Container)`
   max-width: 80vw;
 `
 
+const DirectionalImage = (direction: string) => styled.div`
+  width: 50vw;
+  @media (max-width: ${breakpoints.lg}px) {
+    width: 70vw;
+  }
+  @media (max-width: ${breakpoints.md}px) {
+    width: 90vw;
+  }
+  position: relative;
+  margin: 3rem auto;
+
+  img {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.3;
+    height: 100%;
+    ${direction}: -8rem;
+  }
+  h2 {
+    text-align: center;
+  }
+`
+
+const ImageOnLeft = DirectionalImage('left')
+const ImageOnRight = DirectionalImage('right')
+
 const IndexPage = () => (
   <IndexLayout>
     <LandingPage>
-      <TriangleSection />
       <DeskContainer>
         <DeskDiv>
           {[
@@ -99,6 +114,31 @@ const IndexPage = () => (
       </DeskContainer>
     </LandingPage>
     <CardContainer />
+    <ImageOnLeft>
+      <img src={ReactLogo} alt="React" />
+      <h2>React Based Apps</h2>
+      <p>
+        Our development team has produced many React-based apps. These apps include JrGiant.Tech, Joshua-Rose Github pages, the GitHub
+        Issues to Excel Oauth app, and a variety of React apps built as SharePoint Add-ins.
+      </p>
+      <p>
+        Our team has used Create-React-App, Yeoman, and Gatsby as the frameworks to start or power the apps. The majority of the apps
+        consume an API using Rest or GraphQL. Our team uses both JavaScript and TypeScript in the development and testing of the apps.
+      </p>
+    </ImageOnLeft>
+    <ImageOnRight>
+      <img src={SharePointLogo} alt="SharePoint" />
+      <h2>SharePoint Support</h2>
+      <p>
+        Our development team has more than six years of experience in supporting SharePoint. The primary developer has created development
+        environments through Virtual Machines on Microsoft Azure, managed users via Active Directory and GUI, developed/maintained a variety
+        of custom Add-ins, and created custom sandbox solutions.
+      </p>
+      <p>
+        Our primary developer has developed solutions/app/add-ins for SharePoint 2010, 2013, and Online. He has also created bespoke
+        PowerShell apps for user-to-license tracking, custom JavaScript bookmarklets/console-code for automation of tasks.
+      </p>
+    </ImageOnRight>
   </IndexLayout>
 )
 

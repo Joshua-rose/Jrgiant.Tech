@@ -6,6 +6,8 @@ import 'modern-normalize'
 import '../styles/normalize'
 
 import Header from '../components/Header'
+import TriangleSection from '../components/TriangleSection'
+import Footer from '../components/Footer'
 import LayoutRoot from '../components/LayoutRoot'
 import LayoutMain from '../components/LayoutMain'
 
@@ -41,7 +43,9 @@ const IndexLayout: React.FC = ({ children }) => (
           ]}
         />
         <Header title={data.site.siteMetadata.title} />
+        <TriangleSection />
         <LayoutMain>{children}</LayoutMain>
+        <Footer />
       </LayoutRoot>
     )}
   />
