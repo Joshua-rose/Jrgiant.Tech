@@ -6,13 +6,27 @@ import { graphql, Link } from 'gatsby'
 import IndexLayout from '../layouts'
 import Page from '../components/Page'
 import Container from '../components/Container'
+import { colors } from '../styles/variables'
 
 const StyledPost = styled.div`
-  background-color: white;
+  &:hover {
+    h2 {
+      color: #fff;
+    }
+    background-color: ${colors.brand};
+    color: #fff;
+  }
   border-radius: 5px;
+  padding: 2vh 2vw;
   h1 {
     border-bottom: 1px solid black;
   }
+`
+const StyledContainer = styled(Container)`
+  background-color: #fafafa;
+  padding: 5vh 5vw;
+  border-radius: 5px;
+  box-shadow: 0.5vw 0.5vh 2vh #111;
 `
 
 interface BlogProps {
@@ -37,7 +51,7 @@ export default function Blog({ data }: BlogProps) {
   return (
     <IndexLayout>
       <Page>
-        <Container>
+        <StyledContainer>
           {data.allMarkdownRemark.edges.map(({ node }, i) => {
             const {
               frontmatter: { title },
@@ -53,7 +67,7 @@ export default function Blog({ data }: BlogProps) {
               </StyledPost>
             )
           })}
-        </Container>
+        </StyledContainer>
       </Page>
     </IndexLayout>
   )
